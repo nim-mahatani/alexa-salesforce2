@@ -65,14 +65,33 @@ exports.Changes = (slots, session, response) => {
         });
 };
     exports.newCase = (slots, session, response) => {
-    salesforce.createNewCase()
-    .then(cases => {
-            let text = "OK, Case has been created ";
-                 response.say(text);      
-        })
-        .catch((err) => {
-            console.error(err);
-            response.say("Oops. Something went wrong");
-        });
-
-};
+        response.say("OK, let's create a new case, What is the case subject?");   
+    }
+    
+    exports.newCaseSubject = (slots, session, response) => {
+           session.attributes.subject = slots.casesubject.value;
+           response.say("OK, What is the case description?");
+    }
+    
+    exports.newCaseDescription = (slots, session, response) => {
+           session.attributes.description = slots.casedescription.value;
+           response.say("OK, What is the case priority?");
+    }
+    
+    exports.newCasePriority = (slots, session, response) => {
+           session.attributes.priority = slots.casepriority.value;
+           response.say("OK, What is the reason for raising this case?");
+    }
+    
+    exports.newCaseReason = (slots, session, response) => {
+           session.attributes.reason = slots.casereason.value;
+           salesforce.createNewCase({subject: session.attributes.subject, description: session.attributes.description, priority: session.attributes.priority, reason: session.attributes.reason})
+                .then(cases => {
+                        let text = "OK, Case has been created ";
+                             response.say(text);      
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                        response.say("Oops. Something went wrong");
+                    });
+    };
