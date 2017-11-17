@@ -120,12 +120,16 @@ let createCase = (propertyId, customerName, customerId) => {
 let createNewCase = (subject, description, priority, reason) => {
     return new Promise((resolve, reject) => {
         let c = nforce.createSObject('Case');
-        c.set('subject', subject);
-        c.set('description', description);
+        let sub = subject;
+        let des = description;
+        let p = priority;
+        let rea = reason;
+        c.set('subject', sub);
+        c.set('description', des);
         c.set('origin', 'Alexa');
         c.set('status', 'New');
-        c.set('priority', 'High');
-        c.set('reason','Performance');
+        c.set('priority', p);
+        c.set('reason',rea);
         org.insert({sobject: c}, err => {
             if (err) {
                 reject("An error occurred while creating the case. Error is "+err);
