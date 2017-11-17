@@ -124,8 +124,8 @@ let createNewCase = (subject, description, priority, reason) => {
         c.set('description', description);
         c.set('origin', 'Alexa');
         c.set('status', 'New');
-        c.set('priority', priority);
-        c.set('reason',reason);
+        c.set('priority', 'High');
+        c.set('reason','Performance');
         org.insert({sobject: c}, err => {
             if (err) {
                 reject("An error occurred while creating the case. Error is "+err);
