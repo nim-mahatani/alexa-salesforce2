@@ -70,24 +70,26 @@ exports.Changes = (slots, session, response) => {
     
     exports.newCaseSubject = (slots, session, response) => {
            session.attributes.subject = slots.casesubject.value;
-           response.say("OK, What is the case description?");
+           response.say("OK, I got the subject. What is the case description?");
     };
     
     exports.newCaseDescription = (slots, session, response) => {
            session.attributes.description = slots.casedescription.value;
-           response.say("OK, What is the case priority?");
+           response.say("OK, Description is received. What is the case priority?");
     };
     
     exports.newCasePriority = (slots, session, response) => {
            session.attributes.priority = slots.casepriority.value;
-           response.say("OK, What is the reason for raising this case?");
+           response.say("OK, The priority is " + slots.casepriority.value + ". What is the reason for raising this case?");
     };
     
     exports.newCaseReason = (slots, session, response) => {
            session.attributes.reason = slots.casereason.value;
+           response.say("OK, The reason for raising this case is " + slots.casereason.value + "Let me try creating this case for you");
+           response.say('<break time="0.5s"/>');
            salesforce.createNewCase({subject: session.attributes.subject, description: session.attributes.description, priority: session.attributes.priority, reason: session.attributes.reason})
                 .then(cases => {
-                        let text = "OK, Case has been created ";
+                        let text = "Case has been created ";
                              response.say(text);      
                     })
                     .catch((err) => {
