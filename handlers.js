@@ -66,7 +66,7 @@ exports.Changes = (slots, session, response) => {
 };
     exports.newCase = (slots, session, response) => {
     salesforce.createNewCase()
-    .then({
+    .then(cases => {
             let text = "OK, Case has been created ";
                  response.say(text);      
         })
