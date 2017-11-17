@@ -121,16 +121,19 @@ let createNewCase = () => {
 
     return new Promise((resolve, reject) => {
         let c = nforce.createSObject('Case');
-        c.set('subject', `Contact (Facebook Customer)`);
-        c.set('description', "Facebook id: ");
+        c.set('subject', 'Contact (Facebook Customer)');
+        c.set('description', 'Facebook id: ');
         c.set('origin', 'Facebook Bot');
         c.set('status', 'New');
 
         org.insert({sobject: c}, err => {
             if (err) {
+                console.log("1");
                 console.error(err);
                 reject("An error occurred while creating a case");
+                console.log("3");
             } else {
+                console.log("4");
                 resolve(c);
             }
         });
