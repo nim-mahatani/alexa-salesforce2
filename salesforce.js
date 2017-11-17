@@ -118,14 +118,12 @@ let createCase = (propertyId, customerName, customerId) => {
 
 
 let createNewCase = () => {
-
     return new Promise((resolve, reject) => {
         let c = nforce.createSObject('Case');
         c.set('subject', 'Contact (Facebook Customer)');
         c.set('description', 'Facebook id: ');
         c.set('origin', 'Facebook Bot');
         c.set('status', 'New');
-
         org.insert({sobject: c}, err => {
             if (err) {
                 console.log("1");
@@ -138,11 +136,12 @@ let createNewCase = () => {
             }
         });
     });
-
 };
+
 login();
 
 exports.org = org;
 exports.findProperties = findProperties;
 exports.findPriceChanges = findPriceChanges;
 exports.createCase = createCase;
+exports.createNewCase = createNewCase;
