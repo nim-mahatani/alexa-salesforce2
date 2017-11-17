@@ -64,4 +64,14 @@ exports.Changes = (slots, session, response) => {
             response.say("Oops. Something went wrong");
         });
 
+    exports.newCase = (slots, session, response) => {
+    salesforce.createNewCase()
+        .then(c => {
+            let text = "OK, Case has been created ";
+                 response.say(text);      
+        })
+        .catch((err) => {
+            console.error(err);
+            response.say("Oops. Something went wrong");
+        });
 };
