@@ -85,8 +85,7 @@ exports.Changes = (slots, session, response) => {
     
     exports.newCaseReason = (slots, session, response) => {
            session.attributes.reason = slots.casereason.value;
-           response.say("OK, The reason for raising this case is " + slots.casereason.value + "Let me try creating this case for you");
-           response.say('<break time="0.5s"/>');
+           
            salesforce.createNewCase({subject: session.attributes.subject, description: session.attributes.description, priority: session.attributes.priority, reason: session.attributes.reason})
                 .then(cases => {
                         let text = "Case has been created ";
