@@ -140,21 +140,14 @@ let createNewCase = (subject, description, priority, reason) => {
     });
 };
 
-let createLead = (fullname, company) => {
+let createLead = (firstname, lastname, company) => {
     return new Promise((resolve, reject) => {
         let c = nforce.createSObject('Lead');
-        console.log(fullname);
-        var fnames = fullname;
-        console.log(fnames);
-        var names = fnames.split(' ');
-        var fname = names[0];
-        var lname = names[1];
-        
-        console.log(fname);
-        console.log(lname);
+        console.log(firstname);
+        console.log(lastname);
         console.log(company);
-        c.set('firstname', fname)
-        c.set('lastname', lname);
+        c.set('firstname', firstname)
+        c.set('lastname', lastname);
         c.set('company', company);
         org.insert({sobject: c}, err => {
             if (err) {
