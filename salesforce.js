@@ -143,9 +143,9 @@ let createNewCase = (subject, description, priority, reason) => {
 let createLead = (firstname, lastname, company) => {
     return new Promise((resolve, reject) => {
         let c = nforce.createSObject('Lead');
-        console.log(firstname);
-        console.log(lastname);
-        console.log(company);
+        console.log("FirstName is: "+firstname);
+        console.log("LastName is: "+lastname);
+        console.log("Company is : "+company);
         c.set('firstname', firstname)
         c.set('lastname', lastname);
         c.set('company', company);
