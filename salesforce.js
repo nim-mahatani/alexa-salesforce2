@@ -143,7 +143,11 @@ let createNewCase = (subject, description, priority, reason) => {
 let createLead = (params) => {
     return new Promise((resolve, reject) => {
         let c = nforce.createSObject('Lead');
-        c.set('firstname', params[0])
+        console.log(params);
+        console.log(params.firstname);
+        console.log(params.lastname);
+        console.log(params.company);
+        c.set('firstname', params.firstname)
         c.set('lastname', params[1]);
         c.set('company', params[2]);
         org.insert({sobject: c}, err => {
