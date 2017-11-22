@@ -143,10 +143,13 @@ let createNewCase = (subject, description, priority, reason) => {
 let createLead = (fullname, company) => {
     return new Promise((resolve, reject) => {
         let c = nforce.createSObject('Lead');
-        let names = fullname.split(' ');
-        let fname = names[0];
-        let lname = names[1];
         console.log(fullname);
+        var fnames = fullname;
+        console.log(fnames);
+        var names = fnames.split(' ');
+        var fname = names[0];
+        var lname = names[1];
+        
         console.log(fname);
         console.log(lname);
         console.log(company);
