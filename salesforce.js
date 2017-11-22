@@ -148,8 +148,8 @@ let createLead = (params) => {
         console.log(params.lastname);
         console.log(params.company);
         c.set('firstname', params.firstname)
-        c.set('lastname', params[1]);
-        c.set('company', params[2]);
+        c.set('lastname', params.lastname);
+        c.set('company', params.company);
         org.insert({sobject: c}, err => {
             if (err) {
                 reject("An error occurred while creating the lead. Error is "+err);
