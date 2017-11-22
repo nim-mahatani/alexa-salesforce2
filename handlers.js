@@ -109,7 +109,10 @@ exports.newLead = (slots, session, response) => {
 
     exports.newLeadCompany = (slots, session, response) => {
            session.attributes.companyname = slots.newLeadCompanyName.value;
-           salesforce.createLead({firstname: session.attributes.leadfirstname, lastname: session.attributes.leadlastname, company: session.attributes.companyname})
+           console.log(session.attributes.leadfirstname);
+           console.log(session.attributes.leadlastname);
+        console.log(session.attributes.companyname);
+           salesforce.createLead({firstname:session.attributes.leadfirstname, lastname:session.attributes.leadlastname, company:session.attributes.companyname})
                 .then(leads => {
                         let text = "Lead has been created ";
                              response.say(text);      
