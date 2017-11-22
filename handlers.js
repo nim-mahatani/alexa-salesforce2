@@ -96,3 +96,25 @@ exports.Changes = (slots, session, response) => {
                         response.say("Oops. Something went wrong");
                     });
     };
+
+exports.newLead = (slots, session, response) => {
+        response.say("OK, let's create a new lead, What is the lead's full name?");   
+    };
+
+    exports.newLeadName = (slots, session, response) => {
+           session.attributes.leadname = slots.newLeadFullName.value;
+           response.say("OK, Lead's name is "+slots.newLeadFullName.value+". What is the name of the Lead's Company?");
+    };
+
+    exports.newLeadCompany = (slots, session, response) => {
+           session.attributes.companyname = slots.newLeadCompanyName.value;
+           salesforce.createLead({fullname: session.attributes.leadname, company: session.attributes.companyname})
+                .then(leads => {
+                        let text = "Lead has been created ";
+                             response.say(text);      
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                        response.say("Oops. Something went wrong");
+                    });
+    };
