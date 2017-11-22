@@ -140,18 +140,12 @@ let createNewCase = (subject, description, priority, reason) => {
     });
 };
 
-let createLead = (firstname, lastname, company) => {
+let createLead = (params) => {
     return new Promise((resolve, reject) => {
         let c = nforce.createSObject('Lead');
-        console.log("FirstName is: "+firstname);
-        console.log("LastName is: "+lastname);
-        console.log("Company is : "+company);
-        console.log(firstname);
-        console.log(lastname);
-        console.log(company);
-        c.set('firstname', firstname)
-        c.set('lastname', lastname);
-        c.set('company', company);
+        c.set('firstname', params[0])
+        c.set('lastname', params[1]);
+        c.set('company', params[2]);
         org.insert({sobject: c}, err => {
             if (err) {
                 reject("An error occurred while creating the lead. Error is "+err);
