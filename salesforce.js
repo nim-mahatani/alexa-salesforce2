@@ -146,6 +146,9 @@ let createLead = (firstname, lastname, company) => {
         console.log("FirstName is: "+firstname);
         console.log("LastName is: "+lastname);
         console.log("Company is : "+company);
+        console.log(firstname);
+        console.log(lastname);
+        console.log(company);
         c.set('firstname', firstname)
         c.set('lastname', lastname);
         c.set('company', company);
