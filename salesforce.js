@@ -120,10 +120,10 @@ let createCase = (propertyId, customerName, customerId) => {
 let createNewCase = (params) => {
     return new Promise((resolve, reject) => {
         let c = nforce.createSObject('Case');
-        console.log(subject);
-        console.log(description);
-        console.log(priority);
-        console.log(reason);
+        console.log(params.subject);
+        console.log(params.description);
+        console.log(params.priority);
+        console.log(params.reason);
         c.set('subject', params.subject);
         c.set('description', params.description);
         c.set('origin', 'Alexa');
