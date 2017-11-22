@@ -102,13 +102,14 @@ exports.newLead = (slots, session, response) => {
     };
 
     exports.newLeadName = (slots, session, response) => {
-           session.attributes.leadname = slots.newLeadFullName.value;
-           response.say("OK, Lead's name is "+slots.newLeadFullName.value+". What is the name of the Lead's Company?");
+           session.attributes.leadfirstname = slots.newLeadFirstName.value;
+           session.attributes.leadlastname = slots.newLeadLastName.value;
+           response.say("OK, Lead's name is "+slots.newLeadFirstName.value+" "+slots.newLeadLastName.value+". What is the name of the Lead's Company?");
     };
 
     exports.newLeadCompany = (slots, session, response) => {
            session.attributes.companyname = slots.newLeadCompanyName.value;
-           salesforce.createLead({fullname: session.attributes.leadname, company: session.attributes.companyname})
+           salesforce.createLead({firstname: session.attributes.leadfirstname, lastname: session.attributes.leadlastname, company: session.attributes.companyname})
                 .then(leads => {
                         let text = "Lead has been created ";
                              response.say(text);      
