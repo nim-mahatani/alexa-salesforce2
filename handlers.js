@@ -127,11 +127,11 @@ exports.newLead = (slots, session, response) => {
                     console.log(orders);
                     orders.forEach(order => {
                         console.log(order);
-                        let corder = order.get("Parent");
+                        let corder = order.get("attributes");
                         console.log(corder);
-                        let dorder = order.get("fields");
+                        let dorder = order.get("_fields");
                         console.log(dorder);
-                        let eorder = order.get("attributes");
+                        let eorder = order.get("Record");
                         console.log(eorder);
                         text += `${corder.Tracking_Number__c} is ${corder.Shipping_Status__c}.`;
                     });
