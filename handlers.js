@@ -123,11 +123,12 @@ exports.newLead = (slots, session, response) => {
            session.attributes.ordernum = slots.ordernumber.value;
             salesforce.checkOrderStatus({ordernumber: session.attributes.ordernum})
                 .then(orders => {
+                    let text = "Your order with Tracking Number ";
                     orders.forEach(order => {
-                            let text = "Your order with Tracking Number ";
                             let ostatus = order.get("Parent");
-                            text += `${ostatus.Tracking_Number__c} is ${ostatus.Shipping_Status__c}.<break time="0.2s"/>`;
+                            text += "${ostatus.Tracking_Number__c} is ${ostatus.Shipping_Status__c}.";
                     });
+                   console.log(text);
                    response.say(text);
                 })
                     .catch((err) => {
