@@ -124,7 +124,9 @@ exports.newLead = (slots, session, response) => {
             salesforce.checkOrderStatus({ordernumber: session.attributes.ordernum})
                 .then(orders => {
                     let text = "Your order with Tracking Number ";
+                    console.log(orders);
                     orders.forEach(order => {
+                        console.log(order);
                             let ostatus = order.get("Parent");
                             text += "${ostatus.Tracking_Number__c} is ${ostatus.Shipping_Status__c}.";
                     });
