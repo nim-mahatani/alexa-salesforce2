@@ -119,3 +119,19 @@ exports.newLead = (slots, session, response) => {
                         response.say("Oops. Something went wrong");
                     });
     };
+    exports.orderStatus = (slots, session, response) => {
+           session.attributes.ordernum = slots.ordernumber.value;
+            salesforce.checkOrderStatus({ordernumber: session.attributes.ordernum})
+                .then(orders => {
+                    orders.forEach(order => {
+                            let text = "Your order with Tracking Number ";
+                            let ostatus = order.get("Parent");
+                            text += `${ostatus.Tracking_Number__c} is ${ostatus.Shipping_Status__c}.<break time="0.2s"/>`;
+                    });
+                   response.say(text);
+                })
+                    .catch((err) => {
+                        console.error(err);
+                        response.say("Oops. Something went wrong");
+                    });
+    };
