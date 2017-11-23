@@ -127,7 +127,7 @@ exports.newLead = (slots, session, response) => {
                     console.log(orders);
                     orders.forEach(order => {
                         console.log(order);
-                        let corder = priceChange.get("Parent");
+                        let corder = orders.get("Parent");
                         console.log(corder);
                         text += `${corder.Tracking_Number__c} is ${corder.Shipping_Status__c}.`;
                     });
