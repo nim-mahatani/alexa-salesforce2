@@ -128,7 +128,8 @@ exports.newLead = (slots, session, response) => {
                     orders.forEach(order => {
                         console.log(order);
                             let ostatus = order.get("Parent");
-                            text += "${ostatus.Tracking_Number__c} is ${ostatus.Shipping_Status__c}.";
+                        console.log(ostatus);
+                            text += `${ostatus.Tracking_Number__c} is ${ostatus.Shipping_Status__c}.`;
                     });
                    console.log(text);
                    response.say(text);
