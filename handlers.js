@@ -129,6 +129,10 @@ exports.newLead = (slots, session, response) => {
                         console.log(order);
                         let corder = order.get("Parent");
                         console.log(corder);
+                        let dorder = order.get("fields");
+                        console.log(dorder);
+                        let eorder = order.get("attributes");
+                        console.log(eorder);
                         text += `${corder.Tracking_Number__c} is ${corder.Shipping_Status__c}.`;
                     });
                    console.log(text);
