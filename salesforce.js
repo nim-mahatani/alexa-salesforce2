@@ -190,3 +190,4 @@ exports.findPriceChanges = findPriceChanges;
 exports.createCase = createCase;
 exports.createNewCase = createNewCase;
 exports.createLead = createLead;
+exports.checkOrderStatus = checkOrderStatus;
