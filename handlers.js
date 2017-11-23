@@ -126,14 +126,7 @@ exports.newLead = (slots, session, response) => {
                     let text = "Your order with Tracking Number ";
                     console.log(orders);
                     orders.forEach(order => {
-                        console.log(order);
-                        let corder = order.get("attributes");
-                        console.log(corder);
-                        let dorder = order.get("_fields");
-                        console.log(dorder);
-                        let eorder = order.get("Record");
-                        console.log(eorder);
-                        text += `${corder.Tracking_Number__c} is ${corder.Shipping_Status__c}.`;
+                        text += `${order.get("Tracking_Number__c")} is ${order.get("Shipping_Status__c")}.`;
                     });
                    console.log(text);
                    response.say(text);
