@@ -161,7 +161,7 @@ let createLead = (params) => {
 };
 
 let checkOrderStatus = (params) => {
-    let where = "WHERE Name = O-" + params.ordernumber;
+    let where = "WHERE Name = 'O-" + params.ordernumber+"'";
     return new Promise((resolve, reject) => {
         let q = `SELECT id,
                     Name,
