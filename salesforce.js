@@ -160,6 +160,28 @@ let createLead = (params) => {
     });
 };
 
+let checkOrderStatus = (params) => {
+    let where = "WHERE Name = O-" + params.ordernumber;
+    return new Promise((resolve, reject) => {
+        let q = `SELECT id,
+                    Name,
+                    Expected_Delivery_Date__c,
+                    Shipping_Status__c,
+                    Tracking_Number__c
+                FROM Shipping_Status__c
+                ${where}
+                LIMIT 1`;
+        org.query({query: q}, (err, resp) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(resp.records);
+            }
+        });
+    });
+
+};
+
 login();
 
 exports.org = org;
