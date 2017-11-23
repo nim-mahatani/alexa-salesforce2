@@ -171,6 +171,7 @@ let checkOrderStatus = (params) => {
                 FROM Shipping_Status__c
                 ${where}
                 LIMIT 1`;
+        console.log(q);
         org.query({query: q}, (err, resp) => {
             if (err) {
                 reject(err);
